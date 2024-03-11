@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRM_app</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <% if user_signed_in? %>
+      <%= render partial: "cart/cart" if @render_cart %>
+    <!-- Навигационная панель для авторизованных пользователей -->
+    <nav>
+      <!-- Ссылки навигации -->
+    </nav>
+  <% end %>
+
+  <%= yield %>
+
+</body>
+</html>

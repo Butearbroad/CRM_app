@@ -1,0 +1,24 @@
+<% @cart.orderables.each do |orderable| %>
+  <% crm = orderable.crm %>
+  <div id="<%= "cart-#{crm.id}" %>">
+    <div style="display:flex;justify-content:space-between;margin: 0em 5em;">
+      <strong>Задача:</strong>
+      <%= crm.title %>
+      <strong>Описание:</strong>
+      <%= crm.description %>
+      <strong>Цена:</strong>
+      <%= crm.price %>
+      <%= form_with(url: cart_add_path) do |f| %>
+        <%= f.hidden_field :id, value: crm.id %>
+        <%= f.number_field :quantity, value: orderable.quantity, min: 0 %>
+        <%= f.submit "Добавить в закладки" %>
+      <% end %>
+      <%= form_with(url: cart_remove_path) do |f| %>
+        <%= f.hidden_field :id, value: orderable.id %>
+        <%= f.submit "Х" %>
+      <% end %>
+      <strong>Ваш заказ на:</strong>
+      <%= orderable.total %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,55 @@
+<h1>Информация о задаче</h1>
+
+<p><strong>Задача:</strong> <%= @crm.title %></p>
+<p><strong>Описание:</strong> <%= @crm.description %></p>
+<p><strong>Цена:</strong> <%= @crm.price %></p>
+<p><strong>Количество:</strong> <%= @crm.quantity %></p>
+
+<p><%= link_to 'Редактировать', edit_crm_path(@crm) %></p>
+<p><%= link_to 'Назад', crms_path %></p>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    p {
+      max-width: 500px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    p strong {
+      margin-right: 8px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #3498db;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    a:hover {
+      background-color: #2980b9;
+    }
+  </style>

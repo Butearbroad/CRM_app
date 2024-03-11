@@ -1,0 +1,40 @@
+<h1>Закладки</h1>
+<% @cart.orderables.each do |orderable| %>
+  <% crm = orderable.crm %>
+  <p><%= crm.title %> * <%= orderable.quantity %> = $<%= crm.price * orderable.quantity %></p>
+
+       <%= render partial: "cart/cart" if @render_cart %>
+<% end %>
+<p>Ваша общая сумма за заказы $ <%= @cart.total %> </p>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .order-container {
+      max-width: 500px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    p {
+      margin: 10px 0;
+    }
+
+    p:last-child {
+      font-weight: bold;
+    }
+  </style>

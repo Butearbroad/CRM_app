@@ -1,0 +1,88 @@
+<h1>Список задач</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Задача</th>
+      <th>Описание</th>
+      <th>Цена за одного лида</th>
+      <th>Количество </th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @crms.each do |crm| %>
+      <tr>
+        <td><%= crm.title %></td>
+        <td><%= crm.description %></td>
+        <td><%= crm.price %></td>
+        <td><%= crm.quantity %></td>
+        <td><%= link_to 'Просмотреть', crm %></td>
+        <td><%= link_to 'Редактировать', edit_crm_path(crm) %></td>
+        <td><%= link_to 'Удалить', crm, 'data-turbo-method': :delete, data: { confirm: 'Вы уверены?' } %></td>
+         <%= form_with(url: cart_add_path) do |f| %>
+      <td><%= f.hidden_field :id, value: crm.id %>
+      <%= f.number_field :quantity, value: 0, min: 1 %>
+      <%= f.submit "Добавить в закладки" %></td>
+    <% end %> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'Добавить задачу', new_crm_path %></p>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #3498db;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>

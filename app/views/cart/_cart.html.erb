@@ -1,0 +1,18 @@
+
+<%= turbo_frame_tag "cart" do %>
+  <h1>Закладки</h1>
+  <% if @cart.orderables.count > 0 %>
+    <%= render "cart/orderables" %>
+    <p>Всего за задачи: <%= @cart.total %></p>
+  <% else %>
+    <p>Ваши закладки пусты</p>
+  <% end %>
+<% end %>
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Корзина', cart_path %></li>
+    <li><%= link_to 'Список задач', crms_path %></li>
+    <%= link_to 'Выйти', destroy_user_session_path, 'data-turbo-method': :delete %></li>
+  </ul>
+</nav>
